@@ -9,6 +9,8 @@ import type { PrismaClient } from './generated/prisma/client.ts';
 import { ProductsRepo } from './repo/products.repo.ts';
 import { ProductsController } from './controllers/products.controller.ts';
 import { ProductsRouter } from './routers/products.routes.ts';
+import { HttpError } from './errors/http-errors.ts';
+import { errorHandler } from './middleware/error-handler.ts';
 
 export const createApp = (prisma: PrismaClient) => {
     log('Starting Express app...');
@@ -167,12 +169,15 @@ export const createApp = (prisma: PrismaClient) => {
         return res.json(deletedProduct[0]);
     });
 
-    // Endpoint para rutas o recursos no encontrados, por buenas prácticas llamaríamos a un manejador de errores al que pasaríamos el error con next, por ahora lo mantenemos aquí para el prototipo
-    app.use((_req: Request, res: Response) => {
-        log('Calling errorHandler for 404 error...');
-        const error = new Error('Not Found');
-        return res.send(error);
+    // Llamamos al manejador de errores para rutas no existentes
+    app.use((_req, _res, next) => {
+        log('Calling error handler for non exist routes');
+        const error = new HttpError(404, 'Not Found', 'Resource nor found');
+        next(error);
     });
+
+    // finalmente llamamos al manejador de errores
+    app.use(errorHandler);
 
     return app;
 };
