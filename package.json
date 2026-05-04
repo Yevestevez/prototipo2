@@ -4,8 +4,8 @@
     "description": "Prototipo API (Node/express) - examen DATW (módulo 2)",
     "main": "index.ts",
     "scripts": {
-        "start": "cross-env NODE_ENV=prod node ./src/server1.ts",
-        "dev": "node --watch --env-file=.env ./src/server1.ts",
+        "start": "cross-env NODE_ENV=prod node ./src/index.ts",
+        "dev": "node --watch --env-file=.env ./src/index.ts",
         "test": "node --env-file=.env.test --test",
         "test:serie": "node --env-file=.env.test --test --test-concurrency=1"
     },
