@@ -5,8 +5,9 @@ import type { Request, Response } from 'express';
 import { products } from '../data/products.ts';
 import { log } from 'debug';
 import type { Product } from './schemas/products.ts';
+import type { PrismaClient } from './generated/prisma/client.ts';
 
-export const createApp = () => {
+export const createApp = (prisma: PrismaClient) => {
     log('Starting Express app...');
     const app = express();
 

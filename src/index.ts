@@ -1,6 +1,7 @@
 import debug from 'debug';
 import { createServer } from 'node:http';
 import { createApp } from './app.ts';
+import { connectDB } from './config/db-config.ts';
 
 const env = process.env;
 
@@ -34,11 +35,12 @@ const startServer = async () => {
 
     log('Starting Node server...');
 
+    const prisma = await connectDB();
+
+    const app = createApp(prisma);
+    // Creamos nuestro servidor pasándole nuestra aplicación app
     // Introducimos el puerto como variable de entorno
     const port = env.PORT || 3000;
-
-    const app = createApp();
-    // Creamos nuestro servidor pasándole nuestra aplicación app
     const server = createServer(app);
     // Ponemos al servidor a escuchar en el puerto
     server.listen(port);
