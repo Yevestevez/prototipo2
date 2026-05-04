@@ -1,0 +1,201 @@
+{
+  "info": {
+    "_postman_id": "e006c133-a437-45bd-b855-5c93df661523",
+    "name": "PRODUCTS",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+    "_exporter_id": "52651695",
+    "_collection_link": "https://go.postman.co/collection/52651695-e006c133-a437-45bd-b855-5c93df661523?source=collection_link"
+  },
+  "item": [
+    {
+      "name": "/",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}:{{port}}/",
+          "host": [
+            "{{url}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            ""
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "/api",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}:{{port}}/api",
+          "host": [
+            "{{url}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/products",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}:{{port}}/api/products",
+          "host": [
+            "{{url}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/products/:id",
+      "request": {
+        "method": "GET",
+        "header": [],
+        "url": {
+          "raw": "{{url}}:{{port}}/api/products/1",
+          "host": [
+            "{{url}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api",
+            "products",
+            "1"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/products",
+      "request": {
+        "method": "POST",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"name\": \"Producto 4\",\r\n        \"price\": 10.99,\r\n        \"stock\": 100,\r\n        \"is_active\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}:{{port}}/api/products",
+          "host": [
+            "{{url}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api",
+            "products"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/products",
+      "request": {
+        "method": "PATCH",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": "{\r\n        \"name\": \"Producto 4 NEW\",\r\n        \"price\": 10.99,\r\n        \"stock\": 100,\r\n        \"is_active\": true\r\n}",
+          "options": {
+            "raw": {
+              "language": "json"
+            }
+          }
+        },
+        "url": {
+          "raw": "{{url}}:{{port}}/api/products/4",
+          "host": [
+            "{{url}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api",
+            "products",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "api/products",
+      "request": {
+        "method": "DELETE",
+        "header": [],
+        "body": {
+          "mode": "raw",
+          "raw": ""
+        },
+        "url": {
+          "raw": "{{url}}:{{port}}/api/products/4",
+          "host": [
+            "{{url}}"
+          ],
+          "port": "{{port}}",
+          "path": [
+            "api",
+            "products",
+            "4"
+          ]
+        }
+      },
+      "response": []
+    }
+  ],
+  "event": [
+    {
+      "listen": "prerequest",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    },
+    {
+      "listen": "test",
+      "script": {
+        "type": "text/javascript",
+        "packages": {},
+        "requests": {},
+        "exec": [
+          ""
+        ]
+      }
+    }
+  ],
+  "variable": [
+    {
+      "key": "url",
+      "value": ""
+    },
+    {
+      "key": "port",
+      "value": ""
+    }
+  ]
+}
