@@ -6,6 +6,9 @@ import { products } from '../data/products.ts';
 import { log } from 'debug';
 import type { Product } from './schemas/products.ts';
 import type { PrismaClient } from './generated/prisma/client.ts';
+import { ProductsRepo } from './repo/products.repo.ts';
+import { ProductsController } from './controllers/products.controller.ts';
+import { ProductsRouter } from './routers/products.routes.ts';
 
 export const createApp = (prisma: PrismaClient) => {
     log('Starting Express app...');
@@ -47,6 +50,12 @@ export const createApp = (prisma: PrismaClient) => {
     });
 
     // Rutas CRUD de producto
+
+    // Manejo de ruta de productos con router específico
+    const productsRepo = new ProductsRepo(prisma);
+    const productsController = new ProductsController(productsRepo);
+    const productsRouter = new ProductsRouter(productsController);
+    app.use('/api/products', productsRouter.router);
 
     // GetAllProducts
     app.get('/api/products', async (_req: Request, res: Response) => {
